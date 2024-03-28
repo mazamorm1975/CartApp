@@ -25,13 +25,20 @@ export const CartApp = () => {
 
   const handlerAddProductCart = (product) => {
 
+    setCartItem([...cartItems,
+      { 
+        product,
+        quantity:1,
+        total: product.price * 1
+      }
+    ]);
   }
 
   return (
     <>
       <div className="container">
         <h1>Cart App</h1>
-        <CatalogView />
+        <CatalogView handler={product => handlerAddProductCart(product)}/>
         <div className="my-4 w-50">
           <CartView items={cartItems}/>
         </div>
