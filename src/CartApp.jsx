@@ -25,13 +25,42 @@ export const CartApp = () => {
 
   const handlerAddProductCart = (product) => {
 
-    setCartItem([...cartItems,
-      { 
-        product,
-        quantity:1,
-        total: product.price * 1
-      }
-    ]);
+    const hasItem = cartItems.find((i) => i.product.id === product.id);
+
+    if(hasItem){
+
+  //    setCartItem([
+  //      ...cartItems.filter((i) => i.product.id !== product.id),
+  //      {
+  //        product,
+  //        quantity: hasItem.quantity + 1,
+  //      }
+  //    ])
+
+  //Otra forma de implementar al actualización de los productos utilizando una sentencia map
+  
+      setCartItem(
+        cartItems.map(
+          (i) => {
+            if (i.product.id === product.id) {
+              i.quantity = i.quantity + 1;
+            }
+            return i;
+          }
+          
+        )
+      );  
+
+
+    }else {
+
+      setCartItem([...cartItems,
+        { 
+          product,
+          quantity:1,
+        }
+      ]);
+    }    
   }
 
   return (
