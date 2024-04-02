@@ -1,12 +1,11 @@
 export const products = [
-    
-    {
+        {
         id:1,
         name:"Teclado Mecanico RGB",
         description:"Teclado Mecanico con luces RGB switches cherry red",
         price: 5000.45
     },
-
+    
     {
         id:2,
         name:"Samsung Smart TV",
