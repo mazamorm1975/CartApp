@@ -2,24 +2,12 @@ import { useState } from "react";
 import { CartView } from "./Components/CartView";
 import { CatalogView } from "./Components/CatalogView";
 
-const initialCartItems = [
-/*
-  {
-    product: {
-      id:1,
-        name:"Teclado Mecanico RGB",
-        description:"Teclado Mecanico con luces RGB switches cherry red",
-        price: 5000.45
-    },
-    quantity: 0,
-    total: 0
-  }
-*/
-]
-
+const initialCartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
 
 
 export const CartApp = () => {
+
+  console.log(initialCartItems);
 
   const [cartItems, setCartItem] = useState(initialCartItems);
 
