@@ -40,7 +40,8 @@ export const CartView = ({handlerDelete, items}) => {
                   className="btn btn-danger"
                   onClick={() => onDeleteProduct(item.product.id)}>eliminar</button></td>
                 </tr>
-              ))}
+              ))
+              }
               
             </tbody>
             <tfoot>
