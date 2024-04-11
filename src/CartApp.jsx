@@ -2,15 +2,10 @@
 import { CartView } from "./Components/CartView";
 import { CatalogView } from "./Components/CatalogView";
 import { useItemCart } from "./hooks/useItemCart";
-<<<<<<< HEAD
 import { Navigate, Route, Routes } from "react-router-dom";
-=======
->>>>>>> f4bfa003ca205f71d857e3825da5f75098e9aa19
-
 
 export const CartApp = () => {
 
-<<<<<<< HEAD
   const { cartItems, handlerAddProductCart, handlerDeleteProductCart } = useItemCart();
 
   return (
@@ -42,8 +37,6 @@ export const CartApp = () => {
       </div>
     </>
   );
-=======
-  const { cartItems, handlerAddProductCart, handlerDeleteProductCart} = useItemCart();
 
 return (
   <>
@@ -59,5 +52,5 @@ return (
     </div>
   </>
 );
->>>>>>> f4bfa003ca205f71d857e3825da5f75098e9aa19
+
 };
