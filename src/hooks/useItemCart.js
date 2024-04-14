@@ -50,9 +50,9 @@ export const useItemCart = () => {
 
       dispatch({
         type: UpdateQuantityProductCart,
-        payload: product
+        payload: product,
       }
-      )
+      );
 
 
     } else {

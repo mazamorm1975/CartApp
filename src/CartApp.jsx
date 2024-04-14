@@ -12,45 +12,32 @@ export const CartApp = () => {
     <>
       <div className="container my-4">
         <h1>Cart App</h1>
-        <Routes>
-          <Route path="catalog" element={<CatalogView handler={product => handlerAddProductCart(product)} />} />
-          <Route path="cart" element={(
 
-            cartItems?.length <= 0 ?
+        <CatalogView handler={product => handlerAddProductCart(product)} />
 
-            <div className="alert alert-warning">No hay producto en el carrito de compras</div>:
-            
-            (
-              <div className="my-4 w-50">
-                <CartView items={cartItems} handlerDelete={handlerDeleteProductCart} />
-              </div>
-            )
-
-          )} />
-
-          <Route path="/" element={<Navigate to={'/catalog'} />} />
-
-        </Routes>
-
-
-
+        {cartItems?.length <= 0 ||
+          (
+            <div className="my-4 w-50">
+              <CartView items={cartItems} handlerDelete={handlerDeleteProductCart} />
+            </div>
+          )}
       </div>
     </>
   );
 
-return (
-  <>
-    <div className="container my-4">
-      <h1>Cart App</h1>
-      <CatalogView handler={product => handlerAddProductCart(product)} />
+  return (
+    <>
+      <div className="container my-4">
+        <h1>Cart App</h1>
+        <CatalogView handler={product => handlerAddProductCart(product)} />
 
-      {cartItems?.length <= 0 || (
-        <div className="my-4 w-50">
-          <CartView items={cartItems} handlerDelete={handlerDeleteProductCart} />
-        </div>
-      )}
-    </div>
-  </>
-);
+        {cartItems?.length <= 0 || (
+          <div className="my-4 w-50">
+            <CartView items={cartItems} handlerDelete={handlerDeleteProductCart} />
+          </div>
+        )}
+      </div>
+    </>
+  );
 
 };
