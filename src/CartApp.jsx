@@ -1,6 +1,7 @@
 
 import { CartView } from "./Components/CartView";
 import { CatalogView } from "./Components/CatalogView";
+import { Navbar } from "./Components/Navbar";
 import { useItemCart } from "./hooks/useItemCart";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -10,6 +11,7 @@ export const CartApp = () => {
 
   return (
     <>
+    <Navbar/>
       <div className="container my-4">
         <h1>Cart App</h1>
 
