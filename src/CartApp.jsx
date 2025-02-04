@@ -3,7 +3,19 @@ import { CartView } from "./Components/CartView";
 import { CatalogView } from "./Components/CatalogView";
 import { Navbar } from "./Components/Navbar";
 import { useItemCart } from "./hooks/useItemCart";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { CartRoutes } from "./routes/CartRoutes";
+
+//De la linea 7 - 16 se usa como test la opcion Fetch de jsonplaceholder para testeo de una API's devolviendo un json
+const httpClient = fetch('https://jsonplaceholder.typicode.com/users');
+
+httpClient.then(response => {
+
+  response.json().then(data => {
+
+    console.log(data);
+  });
+
+});
 
 export const CartApp = () => {
 
