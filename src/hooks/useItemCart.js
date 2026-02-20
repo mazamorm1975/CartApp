@@ -1,6 +1,8 @@
 import { useEffect, useReducer } from "react";
+import { toast } from "react-toastify";
 import { itemsReducer } from "../reducer/itemsReducer";
 import { AddProductCart, DeleteProductCart, UpdateQuantityProductCart } from "../reducer/itemsActions";
+import { saveProductToDatabase } from "../service/serviceProducts";
 
 const initialCartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
 
@@ -23,72 +25,37 @@ export const useItemCart = () => {
 
     if (hasItem) {
 
-      /* Actualizacion de los productos de manera rudimentaria
-          setCartItem([
-            ...cartItems.filter((i) => i.product.id !== product.id),
-            {
-              product,
-              quantity: hasItem.quantity + 1,
-            }
-          ])
-    
-      /*Actualización de los productos utilizando una sentencia map
-      
-          setCartItem(
-            cartItems.map(
-              (i) => {
-                if (i.product.id === product.id) {
-                  i.quantity = i.quantity + 1;
-                }
-                return i;
-              }
-              
-            )
-          );  
-       */
-      //Se utiliza el hook useReducer para la actualización de productos
-
       dispatch({
         type: UpdateQuantityProductCart,
         payload: product,
-      }
-      );
-
+      });
 
     } else {
 
-  /*    
-     setCartItem([...cartItems,
-      {
-        product,
-        quantity: 1,
-      }
-      ]);
-  */
-      dispatch(
-        {
-          type: AddProductCart,
-          payload: product
-        }
-      )
+      dispatch({
+        type: AddProductCart,
+        payload: product
+      });
+
+      // Guardar producto en la base de datos
+      saveProductToDatabase(product)
+        .then(response => {
+          toast.success('Producto guardado en la base de datos exitosamente');
+        })
+        .catch(error => {
+          console.log('Error capturado en hook:', error.message);
+          toast.error(`Error: ${error.message}`);
+        });
 
     }
 
   }
 
   const handlerDeleteProductCart = (id) => {
-   /* 
-    setCartItem([
-      ...cartItems.filter((i) => i.product.id !== id)
-    ]);
-    */
-
-    //Se utiliza el hook useReducer para la eliminación de articulos
     dispatch({
       type: DeleteProductCart,
       payload: id,
     })
-
   }
 
 
