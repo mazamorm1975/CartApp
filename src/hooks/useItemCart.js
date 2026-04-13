@@ -8,7 +8,7 @@ const initialCartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
 
 export const useItemCart = () => {
 
-    //Aqui se utilizo el useState
+  //Aqui se utilizo el useState
   //const [cartItems, setCartItem] = useState(initialCartItems);
 
   //Se implementa el hook useReducer en lugar del useState por ser mas conveniente 
@@ -17,7 +17,7 @@ export const useItemCart = () => {
 
   useEffect(() => {
     sessionStorage.setItem('cart', JSON.stringify(cartItems));
-}, [cartItems])
+  }, [cartItems])
 
   const handlerAddProductCart = (product) => {
 
@@ -46,9 +46,7 @@ export const useItemCart = () => {
           console.log('Error capturado en hook:', error.message);
           toast.error(`Error: ${error.message}`);
         });
-
     }
-
   }
 
   const handlerDeleteProductCart = (id) => {
@@ -59,10 +57,10 @@ export const useItemCart = () => {
   }
 
 
-    return {
-        cartItems,
-        handlerAddProductCart,
-        handlerDeleteProductCart,
+  return {
+    cartItems,
+    handlerAddProductCart,
+    handlerDeleteProductCart,
 
-    }
+  }
 }

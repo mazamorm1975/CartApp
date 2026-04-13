@@ -11,7 +11,12 @@ export const itemsReducer = (state = [], action) => {
                 quantity: 1,
             }
             ];
-        case UpdateQuantityProductCart:
+
+  
+     /* El siguiente case es en caso de requerir UNICAMENTE la actualizacion de una parte del registro
+            case UpdateProductCart:
+            return state.map(i => i.product.id === action.payload.id ? { ...i, product: { ...i.product, ...action.payload } } : i);*/
+        case UpdateQuantityProductCart: 
 
             return state.map(
                 (i) => {
@@ -31,12 +36,12 @@ export const itemsReducer = (state = [], action) => {
         case DeleteProductCart:
 
             return [
-                ...state.filter((i)=>i.product.id !== action.payload)
+                ...state.filter((i) => i.product.id !== action.payload)
             ];
-                
+
             //o se le pueden quitar los corchetes como a continuación    
-               state.filter((i) => i.product.id !== action.payload)
-              
+            state.filter((i) => i.product.id !== action.payload)
+
         default:
             return state;
     }

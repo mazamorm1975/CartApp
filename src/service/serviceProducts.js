@@ -54,3 +54,4 @@ export const saveProductToDatabase = async (product) => {
         throw error;
     }
 }
+
